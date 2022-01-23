@@ -45,7 +45,7 @@ nav {
 
 .login__input {
   border: none;
-  padding: 0.5rem 2rem;
+  padding: 0.5em 2rem;
   font-size: 1.6rem;
   font-family: inherit;
   text-align: center;
@@ -58,7 +58,7 @@ nav {
 }
 
 .login__input:focus {
-  outline: none;
+  /* outline: none; */
   border: 1px solid #ccc;
 }
 
@@ -94,8 +94,8 @@ nav {
   gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
-  opacity: 0;
-  transition: all 1s;
+  /* opacity: 0; */
+  transition: all 0.5s;
 }
 
 .balance {
@@ -124,7 +124,7 @@ nav {
 
 /* MOVEMENTS */
 .movements {
-  grid-row: 2 / span 3;
+  grid-row: 2 / span 5;
   background-color: #fff;
   border-radius: 1rem;
   overflow: scroll;
@@ -171,6 +171,7 @@ nav {
 .summary {
   grid-row: 5 / 6;
   display: flex;
+  justify-content: space-between;
   align-items: baseline;
   padding: 0 0.3rem;
   margin-top: 1rem;
@@ -180,7 +181,7 @@ nav {
   font-size: 1.2rem;
   font-weight: 500;
   text-transform: uppercase;
-  margin-right: 0.8rem;
+  margin-right: 1rem;
 }
 
 .summary__value {
@@ -191,6 +192,7 @@ nav {
 .summary__value--in,
 .summary__value--interest {
   color: #66c873;
+  margin-left: auto;
 }
 
 .summary__value--out {
