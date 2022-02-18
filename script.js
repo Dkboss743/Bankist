@@ -154,6 +154,7 @@ const startLogOutTime = function () {
   let t = 60 * 8;
   tick();
   const timer = setInterval(tick, 1000);
+  return timer;
 };
 const calcPrintBalance = function (account) {
   const balance = account.movements.reduce((acc, mov) => acc + mov, 0);
@@ -185,7 +186,7 @@ const createUsernames = function (accounts) {
       .join("");
   });
 };
-let currentAccount;
+let currentAccount, timer;
 
 createUsernames(accounts);
 btnLogin.addEventListener("click", function (E) {
@@ -219,7 +220,8 @@ btnLogin.addEventListener("click", function (E) {
     labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
       now
     );
-    startLogOutTime();
+    if (timer) clearInterval(timer);
+    timer = startLogOutTime();
     displaydata(user);
   } else {
     containerApp.style.opacity = 0;
@@ -248,6 +250,8 @@ btnTransfer.addEventListener("click", function (E) {
     currentAccount.movementsDates.push(new Date());
     tranuser.movementsDates.push(new Date());
     displaydata(currentAccount);
+    clearInterval(timer);
+    timer = startLogOutTime();
   }
 });
 btnLoan.addEventListener("click", function (e) {
@@ -261,6 +265,8 @@ btnLoan.addEventListener("click", function (e) {
     currentAccount.movementsDates.push(new Date());
     displaydata(currentAccount);
   }
+  clearInterval(timer);
+  timer = startLogOutTime();
 });
 btnClose.addEventListener("click", function (e) {
   e.preventDefault();
